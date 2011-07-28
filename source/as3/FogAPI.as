@@ -13,7 +13,7 @@ package {
 		
 		private static var version:String			= "0.0.1";
 		private static var domain:String			= "local.fogdev.com";
-		private static var libpath:String			= "http://" + domain + "/api/as3/lib.swf";
+		private static var libpath:String			= "http://local.fogdev.com/api/as3/lib.swf";
 		
 		private static var clip:MovieClip;
 		
@@ -39,7 +39,7 @@ package {
 			try {
 				var l:Loader = new Loader();
 				l.contentLoaderInfo.addEventListener(Event.COMPLETE, service_load_handle);
-				l.load(new URLRequest(libpath));
+				l.load(new URLRequest(libpath + "?n=" + Math.round(Math.random() * 1000000)));
 //				clip.addChild(l);
 			} catch (e:Error) {
 				log("Error! " + e.message);
@@ -47,12 +47,12 @@ package {
 			
 		}
 		private static function service_load_handle (e:Event): void {
-			if (e.currentTarget.content != null && e.currentTarget.content.service != null) {
-				service = e.currentTarget.content.service;
-				service.connect( { 'game':gameId, 'clip':clip } );
-			} else {
-				log("Failed to load service Library");
-			}
+//			if (e.currentTarget.content != null && e.currentTarget.content.service != null) {
+//				service = e.currentTarget.content.service;
+//				service.connect( { 'game':gameId, 'clip':clip } );
+//			} else {
+//				log("Failed to load service Library");
+//			}
 		}
 		
 		// Debuging
