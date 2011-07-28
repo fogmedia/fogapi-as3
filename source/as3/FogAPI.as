@@ -12,7 +12,8 @@ package {
 	public class FogAPI {
 		
 		private static var version:String			= "0.0.1";
-		private static var libpath:String			= "http://x.fogdev.com/api/as3/lib.swf";
+		private static var domain:String			= "local.fogdev.com";
+		private static var libpath:String			= "http://" + domain + "/api/as3/lib.swf";
 		
 		private static var clip:MovieClip;
 		
