@@ -2,14 +2,14 @@ FogAPI Version 3
 
 Features
 	
+	Scores
+	Storage
+	Auth
 	
+Ideas
 	
-ToDo
-	
-	Loading the API
-	General Services API
-	Statistics API
-	Microtransaction API
-	Shared Content API
-	Chat API
-	Avatar API
+	Statistics
+	Microtransactions
+	Shared Content
+	Chat
+	Avatar
