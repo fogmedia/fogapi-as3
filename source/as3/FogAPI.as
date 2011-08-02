@@ -22,10 +22,12 @@ package {
 		public static var userId:int				= 0;
 		public static var user:Object				= new Object();
 		public static var params:Object				= new Object();
-		public static var service:Object			= { init: load_service };
+		public static var options:Object			= new Object();
+		public static var service:Object			= {};
+		public static var connected:Boolean			= false;
 		
 		//
-		private static function load_service (opt:Object): void {
+		public static function init (opt:Object): void {
 			
 			Security.allowDomain("x.fogdev.com");
 			log("Connecting to FogAPI Server ...");
@@ -47,20 +49,31 @@ package {
 			
 		}
 		private static function service_load_handle (e:Event): void {
-//			if (e.currentTarget.content != null && e.currentTarget.content.service != null) {
-//				service = e.currentTarget.content.service;
-//				service.connect( { 'game':gameId, 'clip':clip } );
-//			} else {
-//				log("Failed to load service Library");
-//			}
+			log("Loaded Library");
+			if (e.currentTarget.content != null) {
+				if (e.currentTarget.content.service != null) {
+					service = e.currentTarget.content.service;
+					service.connect( { 'game':gameId, 'clip':clip } );
+					return;
+				}
+			}
+			log("Failed to load service Library");
 		}
 		
 		// Debuging
 		public static function error (v1:String): void {
-			trace("[FogAPI]", v1);
+			trace("[FogAPI:Error]", v1);
 		}
 		public static function log (v1:String = ''): void {
 			trace("[FogAPI]", v1);
+		}
+		
+		// Preloader
+		public static var preloader:Object = {
+			start: preloader_start
+		}
+		private static function preloader_start (): void {
+			log("starting preloader..");
 		}
 		
 	}

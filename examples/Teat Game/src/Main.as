@@ -24,7 +24,9 @@ package
 			// entry point
 			
 			// Initliaze FogAPI
-			FogAPI.service.init( { game:21415, clip: root } );
+			FogAPI.init( { game:21415, clip: root } );
+			FogAPI.preloader.start();
+			FogAPI.log("after preloader display");
 			
 		}
 		
